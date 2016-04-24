@@ -39,8 +39,9 @@ Zotero.ScholarCitations.resetState = function() {
     Zotero.ScholarCitations.numberOfUpdatedItems = 0;
     Zotero.ScholarCitations.openCitations = false;
     Zotero.ScholarCitations.openCitationsCount = 0;
-    Zotero.ScholarCitations.openCitationsMax = 5;
-    Zotero.ScholarCitations.CitesUrl = new Array();
+    Zotero.ScholarCitations.openCitationsMax = 3;
+    Zotero.ScholarCitations.baseUrl = 'http://scholar.google.com/';
+    //Zotero.ScholarCitations.CitesUrl = new Array();
 };
 
 Zotero.ScholarCitations.updateSelectedEntity = function(libraryId) {
@@ -142,7 +143,7 @@ Zotero.ScholarCitations.generateCitesUrl = function(responseText) {
         return null;
     }
 
-    var citesUrl = 'https://scholar.google.com/' +
+    var citesUrl = Zotero.ScholarCitations.baseUrl +
         responseText.substr(citesStart, citeExists-citesStart-2);
 
     return citesUrl;
@@ -162,7 +163,7 @@ Zotero.ScholarCitations.updateNextItem = function() {
 };
 
 Zotero.ScholarCitations.generateItemUrl = function(item) {
-    var baseUrl = 'http://scholar.glgoo.org/';
+    var baseUrl = Zotero.ScholarCitations.baseUrl;//'http://scholar.google.org/';
     var url = baseUrl +
         'scholar?hl=en&as_q=' +
         encodeURIComponent(item.getField('title')).replace(/ /g, '+') +
