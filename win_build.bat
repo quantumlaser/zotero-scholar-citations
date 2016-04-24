@@ -1,4 +1,4 @@
-set "version=2.0.0"
+set "version=2.0.1"
 del builds\zotero-scholar-citations-%version%-fx.xpi
 rd /s/q builds\temp
 mkdir builds\temp

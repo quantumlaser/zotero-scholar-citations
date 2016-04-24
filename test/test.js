@@ -2,6 +2,8 @@ var zsc = require('../chrome/content/scripts/zoteroscholarcitations.js');
 var assert = require('assert');
 var sinon = require('sinon');
 var request = require('sync-request');
+var openurl = require('openurl');
+var fs = require('fs');
 
 var items = [
 {
@@ -62,6 +64,13 @@ function fetchCitations(item) {
     return parseInt(zsc.getCitationCount(content));
 }
 
+function openCitations(item) {
+    console.log(zsc.openCitations);
+    var content = fs.readFileSync('./content.txt','utf-8');
+    var citesUrl = zsc.generateCitesUrl(content);
+    return citesUrl;
+}
+
 
 suite('Zotero Scholar Citations', function() {
     this.timeout(0);
@@ -79,6 +88,11 @@ suite('Zotero Scholar Citations', function() {
         });
     });
 
+    test('openCitations', function(){
+        items.forEach(function(item) {
+            assert(openCitations(item) != null);
+        })
+    });
+
 
 });
-

@@ -12,9 +12,9 @@
         RDF:about="urn:mozilla:install-manifest"
         em:id="zoteroscholarcitations@beloglazov.info"
         em:name="Zotero Scholar Citations"
-        em:version="1.9.1"
+        em:version="2.0.1"
         em:type="2"
-        em:creator="Anton Beloglazov"
+        em:creator="Anton Beloglazov and Quantumlaser"
         em:description="Zotero plugin for auto-fetching numbers of citations from Google Scholar"
         em:homepageURL="http://beloglazov.info">
         <em:type>2</em:type>
