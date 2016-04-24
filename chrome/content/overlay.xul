@@ -38,5 +38,9 @@
             id="zotero-itemmenu-scholarcitations"
             label="&zotero.scholarcitations.update.label;"
             oncommand="Zotero.ScholarCitations.updateSelectedItems()"/>
+        <menuitem
+            id="zotero-itemmenu-searchScholarcitations"
+            label="&zotero.scholarcitations.searchCite.label;"
+            oncommand="Zotero.ScholarCitations.searchSelectedItems()"/>
     </popup>
 </overlay>
