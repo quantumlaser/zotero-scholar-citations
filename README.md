@@ -1,3 +1,10 @@
+# This forked from https://github.com/beloglazov/zotero-scholar-citations/
+
+# Update List:
+1. Change extra data mode from '00011' to '11', remove extra '0'. And the update
+mode change to override.
+2. Add `search scholar` selection, to open a website showing the cited paper list.
+
 # Zotero Scholar Citations
 
 This is an add-on for Zotero, a research source management tool. The add-on automatically fetches numbers of citations of your Zotero items from Google Scholar and makes it possible to sort your items by the citations. Moreover, it allows batch updating the citations, as they may change over time.
