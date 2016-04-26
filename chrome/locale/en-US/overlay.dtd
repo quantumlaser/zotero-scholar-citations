@@ -1,3 +1,4 @@
 <!ENTITY zotero.scholarcitations.update.label "Update citations">
 <!ENTITY zotero.scholarcitations.updateAll.label "Update all citations">
 <!ENTITY zotero.scholarcitations.searchCite.label "Search Citations">
+<!ENTITY zotero.scholarcitations.clearExtra.label "clear extra">

@@ -74,7 +74,8 @@ function openCitations(item) {
 
 suite('Zotero Scholar Citations', function() {
     this.timeout(0);
-
+    zsc.resetState();
+    
     test('fillZeros', function() {
         assert.equal(zsc.fillZeros(''), '00000');
         assert.equal(zsc.fillZeros('1'), '00001');
