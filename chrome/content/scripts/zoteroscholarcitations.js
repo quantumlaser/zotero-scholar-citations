@@ -40,7 +40,7 @@ Zotero.ScholarCitations.resetState = function() {
     Zotero.ScholarCitations.openCitations = false;
     Zotero.ScholarCitations.openCitationsCount = 0;
     Zotero.ScholarCitations.openCitationsMax = 3;
-    Zotero.ScholarCitations.baseUrl = 'http://scholar.google.com/';
+    Zotero.ScholarCitations.baseUrl = 'https://scholar.google.com/';
     //Zotero.ScholarCitations.CitesUrl = new Array();
 };
 
@@ -74,6 +74,16 @@ Zotero.ScholarCitations.updateSelectedEntity = function(libraryId) {
     } else {
         Zotero.ScholarCitations.updateAll();
     }
+};
+
+Zotero.ScholarCitations.clearSelectedItems = function() {
+    Zotero.ScholarCitations.clearItems(ZoteroPane.getSelectedItems());
+};
+
+Zotero.ScholarCitations.clearItems = function(items){
+    items.forEach(function(item) {
+        item.setField('extra', '');
+    });
 };
 
 Zotero.ScholarCitations.updateSelectedItems = function() {
@@ -200,7 +210,8 @@ Zotero.ScholarCitations.updateItem = function(item) {
                     var citations = Zotero.ScholarCitations.getCitationCount(
                         req.responseText);
                     try{
-                        if(Zotero.ScholarCitations.openCitations == true
+                        if(citations != '0'
+                            && Zotero.ScholarCitations.openCitations == true
                             && Zotero.ScholarCitations.openCitationsCount
                              < Zotero.ScholarCitations.openCitationsMax) {
                                 // windows.open('http://baidu.com');
@@ -213,7 +224,10 @@ Zotero.ScholarCitations.updateItem = function(item) {
                     } catch(e){}
 
                     try {
-                        var old = item.getField('extra')
+                        var old = item.getField('extra');
+                        item.setField('extra', citations);
+                        // This will lose old extra!
+                        if(false){
                             if (old.length == 0 || old.search(/^\d{5}$/) != -1) {
                                 item.setField('extra', citations);
                             } else if (old.search(/^\d{5} *\n/) != -1) {
@@ -231,6 +245,8 @@ Zotero.ScholarCitations.updateItem = function(item) {
                             } else {
                                 item.setField('extra', citations + ' \n' + old);
                             }
+                        }
+
                         item.save();
                     } catch (e) {}
                 }
@@ -265,6 +281,16 @@ Zotero.ScholarCitations.fillZeros = function(number) {
     var cnt = 5 - number.length;
     for (var i = 0; i < cnt; i++) {
         output += '0';
+    }
+    output += number;
+    return output;
+};
+
+Zotero.ScholarCitations.fillSpaces = function(number) {
+    var output = '';
+    var cnt = 5 - number.length;
+    for (var i = 0; i < cnt; i++) {
+        output += ' ';
     }
     output += number;
     return output;

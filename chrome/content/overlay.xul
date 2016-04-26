@@ -42,5 +42,9 @@
             id="zotero-itemmenu-searchScholarcitations"
             label="&zotero.scholarcitations.searchCite.label;"
             oncommand="Zotero.ScholarCitations.searchSelectedItems()"/>
+        <!--menuitem
+            id="zotero-itemmenu-clearExtra"
+            label="&zotero.scholarcitations.clearExtra.label;"
+            oncommand="Zotero.ScholarCitations.clearSelectedItems()"/-->
     </popup>
 </overlay>
